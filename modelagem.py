@@ -37,7 +37,7 @@ cb = 4000
 
 
 #MODELO:
-R1 = 1/(ha*Ag)           # convecção água -> vidro
+R1 = 1/(ha*Ag) 
 R2 = (d/2)/(k*Ag)
 
 def modelo(x, t):
@@ -52,4 +52,28 @@ def modelo(x, t):
     dTbdt = 1/(mb*cb) * (Q2)
     return [dTadt, dTgdt, dTbdt]
 
+
 #IMPLEMENTAÇÃO:
+# Condições iniciais
+T_0 = [T_A0, T_G0, T_B0]
+
+# Lista de tempo
+dt = 1 #(segundos)
+tf = 7200 #2 horas
+t_lista = np.arange(0,tf+dt,dt)
+
+# Resolução numérica
+x_lista = odeint(modelo,T_0,t_lista)
+Ta_lista = x_lista[:,0]-273.15
+Tg_lista = x_lista[:,1]-273.15
+Tb_lista = x_lista[:,2]-273.15
+
+plt.plot(t_lista/60, Ta_lista, label='Água gelada')
+plt.plot(t_lista/60, Tg_lista, label='Garrafa')
+plt.plot(t_lista/60, Tb_lista, label='Bebida')
+plt.title('Temperatura da cerveja na água gelada em função do tempo')
+plt.xlabel('Tempo ($min$)')
+plt.ylabel('Temperatura ($°C$)')
+plt.legend()
+plt.grid()
+plt.show()
