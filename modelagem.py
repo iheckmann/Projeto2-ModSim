@@ -15,25 +15,25 @@ mb = 0.330 # bebida (~330 mL)
 D1, H1 = 0.060, 0.13 # corpo
 D2, H2 = 0.025, 0.10 # gargalo
 
-# áreas (m2)
+#áreas (m2)
 Ag = np.pi*D1*H1 + np.pi*D2*H2 + np.pi*D1**2/4
 
-# vidro
+#vidro
 d = 0.003 # espessura (m)
 k = 1.0 # condutividade (W/(m.K))
 
-# Temperaturas iniciais (K)
+#Temperaturas iniciais (K)
 T_A0 = 273.15 + 2 # água gelada
 T_G0 = 273.15 + 25 # garrafa
 T_B0 = 273.15 + 25 # bebida  
 
-# Calores específicos (J/(kg.K))
+#Calores específicos (J/(kg.K))
 ca = 4186
 cg = 840
 cb = 4000
 
-# coeficiente de transferência convectiva da água (W/(m2.K))
-#ha = 
+#coeficiente de transferência convectiva da água (W/(m2.K))
+ha = 35
 
 
 #MODELO:
@@ -54,15 +54,15 @@ def modelo(x, t):
 
 
 #IMPLEMENTAÇÃO:
-# Condições iniciais
+#Condições iniciais
 T_0 = [T_A0, T_G0, T_B0]
 
-# Lista de tempo
+#Lista de tempo
 dt = 1 #(segundos)
 tf = 7200 #2 horas
 t_lista = np.arange(0,tf+dt,dt)
 
-# Resolução numérica
+#Resolução numérica
 x_lista = odeint(modelo,T_0,t_lista)
 Ta_lista = x_lista[:,0]-273.15
 Tg_lista = x_lista[:,1]-273.15
