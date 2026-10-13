@@ -41,17 +41,19 @@ hb = 50
 R1 = 1/(ha*Ag) 
 R2 = (d/2)/(k*Ag)
 R3 = 1/(hb*Ag)
+R3 = 0
 
 def modelo(x, t):
     Ta = x[0]
     Tg = x[1]
     Tb = x[2]
     Q1 = (Ta - Tg)/(R1 + R2)
-    Q2 = (Tb - Tg)/(R2 + R3)
+    Q2 = (Tg - Tb)/(R2 + R3)
 
     dTadt = 1/(ma*ca) * (-Q1)
     dTgdt = 1/(mg*cg) * (Q1 - Q2)
     dTbdt = 1/(mb*cb) * (Q2)
+    # print(dTadt, dTgdt, dTbdt)
     return [dTadt, dTgdt, dTbdt]
 
 
