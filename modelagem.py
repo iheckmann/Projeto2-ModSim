@@ -34,18 +34,20 @@ cb = 4000
 
 #coeficiente de transferência convectiva da água (W/(m2.K))
 ha = 35
+hb = 50
 
 
 #MODELO:
 R1 = 1/(ha*Ag) 
 R2 = (d/2)/(k*Ag)
+R3 = 1/(hb*Ag)
 
 def modelo(x, t):
     Ta = x[0]
     Tg = x[1]
     Tb = x[2]
     Q1 = (Ta - Tg)/(R1 + R2)
-    Q2 = (Tb - Tg)/R2
+    Q2 = (Tb - Tg)/(R2 + R3)
 
     dTadt = 1/(ma*ca) * (-Q1)
     dTgdt = 1/(mg*cg) * (Q1 - Q2)
