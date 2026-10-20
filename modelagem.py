@@ -13,7 +13,7 @@ mb = 0.330 # bebida (~330 mL)
 
 # geo. da garrafa (m) - dois cilindros
 D1, H1 = 0.060, 0.13 # corpo
-D2, H2 = 0.025, 0.10 # gargalo
+D2, H2 = 0.025, 0.10 # gargalo dfgh
 
 #áreas (m2)
 Ag = np.pi*D1*H1 + np.pi*D2*H2 + np.pi*D1**2/4
