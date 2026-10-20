@@ -23,9 +23,9 @@ d = 0.003387 # espessura (m)
 k = 1.0 # condutividade (W/(m.K))
 
 #Temperaturas iniciais (K)
-T_A0 = 273.15 + 2 # água gelada
-T_G0 = 273.15 + 25 # garrafa
-T_B0 = 273.15 + 25 # bebida  
+T_A0 = 273.15 + 0 # água gelada
+T_G0 = 273.15 + 20.1 # garrafa
+T_B0 = 273.15 + 19.6 # bebida  
 
 #Calores específicos (J/(kg.K))
 ca = 4186
