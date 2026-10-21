@@ -45,7 +45,7 @@ def modelo(x, t):
     Ta = x[0]
     Tg = x[1]
     Tb = x[2]
-    QB = (Tg - Tb_lista)/(R1 + R2)
+    QB = (Tb - Tg)/(R1 + R2)
     QA = (Tg - Ta)/(R2)
 
     dTadt = 1/(ma*ca) * (QA)
